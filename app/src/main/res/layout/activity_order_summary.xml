@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp">
+
+<ImageView
+    android:id="@+id/itemPhotoImageView"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_gravity="center_horizontal"
+    android:scaleType="centerCrop"
+    android:src="@drawable/ic_launcher_foreground" />
+
+<TextView
+    android:id="@+id/itemNameTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Item Name"
+    android:textSize="18sp"
+    android:layout_gravity="center_horizontal" />
+
+<TextView
+    android:id="@+id/itemDescriptionTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Item Description"
+    android:textSize="14sp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="8dp" />
+
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="16dp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/confirmOrderButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Confirm Order" />
+
+    <Button
+        android:id="@+id/changeOrderButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Change Order" />
+
+    <Button
+        android:id="@+id/deleteOrderButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Delete Order" />
+</LinearLayout>
+
+</LinearLayout>

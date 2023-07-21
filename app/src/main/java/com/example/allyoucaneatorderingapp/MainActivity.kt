@@ -3,6 +3,7 @@ package com.example.allyoucaneatorderingapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +34,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateTotalCost() {
-        TODO("Not yet implemented")
+        // Add logic to update the total cost based on the cart items and notify the UI
+        var totalCost = 0.0
+        for (item in cartItems) {
+            totalCost += item.price * item.quantity
+        }
+        // TODO: Update the UI to display the total cost, e.g., a TextView
     }
 
     private val cartItems = mutableListOf<CartItem>()
@@ -66,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             add(MenuItem("Dal-Bhat", "Dal, Bhaat, Tarkari and Meat (lentil soup, " +
                     "rice, green vegetable) along with Kanchhemba (Buckwheat finger chips) the" +
                     " Mustang Alu topped with Jimbu (Himalayan leaf garlic) and a generous dollop of ghee.",
-                        R.drawable.item2))
+                R.drawable.item2))
             add(MenuItem("Pani-Puri", "Crispy, hollow deep-fried puffed bread, " +
                     "traditionally stuffed with masala, chopped onion, and flavored with spicy " +
                     "or sweet-savoury pani (water) to be eaten promptly before becoming soft" +
@@ -92,5 +98,11 @@ class MainActivity : AppCompatActivity() {
         val cartFab = findViewById<FloatingActionButton>(R.id.cartFab)
         cartFab.setImageResource(R.drawable.cart)
         cartFab.contentDescription = "${cartItems.size} items in the cart"
+    }
+    // Function to handle "Back" button click
+    fun onBackButtonClick(view: View) {
+        // Redirect the user back to the LandingActivity when the "Back" button is clicked
+        val intent = Intent(this, LandingActivity::class.java)
+        startActivity(intent)
     }
 }

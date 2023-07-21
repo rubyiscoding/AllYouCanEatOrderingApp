@@ -19,7 +19,9 @@ class OrderSummaryActivity : AppCompatActivity() {
         val itemDescriptionTextView = findViewById<TextView>(R.id.itemDescriptionTextView)
         val itemPhotoImageView = findViewById<ImageView>(R.id.itemPhotoImageView)
 
-        selectedItem = intent.getSerializableExtra("selectedItem") as? MenuItem
+        //selectedItem = intent.getSerializableExtra("selectedItem") as? MenuItem
+        selectedItem = intent.getParcelableExtra("selectedItem")
+
             ?: run {
                 // Handle the case when the selected item is null or not of the correct type
                 finish()

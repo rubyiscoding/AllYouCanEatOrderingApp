@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 
 class MenuAdapter(
     private val menuItems: List<MenuItem>,
@@ -18,7 +17,6 @@ class MenuAdapter(
         private val itemName: TextView = itemView.findViewById(R.id.itemNameTextView)
         private val itemDescription: TextView = itemView.findViewById(R.id.itemDescriptionTextView)
         private val itemPhoto: ImageView = itemView.findViewById(R.id.itemPhotoImageView)
-        private val addToCartButton: MaterialButton = itemView.findViewById(R.id.addToCartButton)
 
         fun bind(menuItem: MenuItem) {
             itemName.text = menuItem.name
@@ -29,15 +27,14 @@ class MenuAdapter(
                 onItemClick(menuItem)
             }
 
-            addToCartButton.setOnClickListener {
-                onAddToCartClick(menuItem) // Call the onAddToCartClick function with the selected item
+            itemPhoto.setOnClickListener {
+                onAddToCartClick(menuItem)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.menu_item_layout, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.menu_item_layout, parent, false)
         return ViewHolder(itemView)
     }
 

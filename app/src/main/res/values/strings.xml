@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AllYouCanEatOrderingApp</string>
+    <string name="total_cost">Total Cost: %s</string>
+
 </resources>

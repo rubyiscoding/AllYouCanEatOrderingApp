@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <!-- Add the RecyclerView for menu items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/cartGuide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Add this at the bottom of your activity_main.xml layout file -->
+    <!-- Guide to position the cart icon and cart item count badge -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cartGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <!-- Add the FloatingActionButton for the cart -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cartFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:src="@drawable/cart"
-        app:layout_anchor="@id/menuRecyclerView"
-        app:layout_anchorGravity="bottom|end"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintStart_toStartOf="@id/cartGuide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cartItemCountTextView"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintVertical_bias="0.5" />
 
+    <!-- Cart item count badge -->
     <TextView
         android:id="@+id/cartItemCountTextView"
-        android:layout_width="73dp"
-        android:layout_height="82dp"
-        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/circle_background"
         android:padding="8dp"
         android:text="0"
         android:textColor="@android:color/white"
         android:visibility="invisible"
-        app:layout_anchor="@id/menuRecyclerView"
-        app:layout_anchorGravity="bottom|end"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="16dp" />
-
+        app:layout_constraintStart_toEndOf="@id/cartFab"
+        app:layout_constraintTop_toTopOf="@id/cartFab" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

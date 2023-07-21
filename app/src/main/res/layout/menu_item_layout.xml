@@ -17,7 +17,7 @@
         android:id="@+id/itemNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Name"
+        android:text="Item 1"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal" />
 
@@ -25,7 +25,7 @@
         android:id="@+id/itemDescriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Description"
+        android:text="Description"
         android:textSize="14sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp" />
@@ -38,27 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/confirmOrderButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Confirm Order" />
-
-        <Button
-            android:id="@+id/changeOrderButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Change Order" />
-
-        <Button
-            android:id="@+id/deleteOrderButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Delete Order" />
 
         <Button
             android:id="@+id/addToCartButton"

@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="boxColor1">#FF4081</color>
+    <color name="boxColor2">#3F51B5</color>
+    <color name="boxColor3">#00BCD4</color>
+    <color name="textColorDark">@android:color/black</color>
+    <color name="textColorLight">@android:color/white</color>
+    <color name="GoldenBlonde">#FBE7A1 </color>
+    <color name="GoldenSilk">#F3E3C3 </color>
+    <color name="BrownSand">#EE9A4D </color>
+    <color name="CookieBrown">#C7A317 </color>
+    <color name="Copper">#B87333 </color>
+    <color name="RedBrown">#622F22 </color>
+    <color name="xx">#DBC290</color>
 </resources>
+
+

@@ -20,13 +20,12 @@ class CartActivity : AppCompatActivity() {
         binding.cartRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.cartRecyclerView.adapter = cartAdapter
 
-        // Add cart items here (you can do it from MainActivity when adding items to the cart)
-        // Example:
-        // cartItems.add(CartItem("Item 1", "Description of Item 1", 10.99, 1))
-        // cartItems.add(CartItem("Item 2", "Description of Item 2", 15.99, 2))
-        // cartItems.add(CartItem("Item 3", "Description of Item 3", 7.99, 3))
+        // Retrieve cart items from the intent extras (sent from MainActivity)
+        val intentCartItems = intent.getSerializableExtra("cartItems") as? ArrayList<CartItem>
+        if (intentCartItems != null) {
+            cartItems.addAll(intentCartItems)
+        }
 
-        // Calculate and update total cost
         updateTotalCost()
     }
 

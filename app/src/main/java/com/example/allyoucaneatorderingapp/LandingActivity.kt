@@ -10,7 +10,7 @@ class LandingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
-        val categoryAppetizer: TextView = findViewById(R.id.categoryAppetizer)
+        val categoryAppetizer: TextView = findViewById(R.id.categoryBurgers)
         val categoryPopularItems: TextView = findViewById(R.id.categoryPopularItems)
 
         // Set a click listener for the "Popular items" category
@@ -21,5 +21,7 @@ class LandingActivity : AppCompatActivity() {
         }
 
         // Add logic or UI setup specific to the LandingActivity if needed
+
+
     }
 }

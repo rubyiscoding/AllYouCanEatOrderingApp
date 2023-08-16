@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,6 +41,11 @@ class MainActivity : AppCompatActivity() {
         for (item in cartItems) {
             totalCost += item.price * item.quantity
         }
+        // Find the TextView for displaying the total cost in your layout
+        val totalCostTextView = findViewById<TextView>(R.id.totalCostTextView)
+
+        // Update the text to display the total cost
+        totalCostTextView.text = "Total Cost: \$${String.format("%.2f", totalCost)}"
         // TODO: Update the UI to display the total cost, e.g., a TextView
     }
 
@@ -57,9 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         val cartFab = findViewById<FloatingActionButton>(R.id.cartFab)
         cartFab.setOnClickListener {
-            val intent = Intent(this@MainActivity, CartActivity::class.java)
-            intent.putExtra("cartItems", ArrayList(cartItems)) // Pass the cart items to CartActivity
-            orderSummaryLauncher.launch(intent)
+            launchCartActivity()
         }
     }
 
@@ -81,14 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onMenuItemClick(menuItem: MenuItem) {
-        // Add the selected item to the cart
-        cartItems.add(CartItem(menuItem.name, menuItem.description, 0.0, 1))
-        updateCartIcon()
-    }
-
-    private fun onAddToCartClick(menuItem: MenuItem) {
-        // Handle adding the selected item to the cart
+    private fun addItemToCart(menuItem: MenuItem) {
         cartItems.add(CartItem(menuItem.name, menuItem.description, 0.0, 1))
         updateCartIcon()
     }
@@ -99,10 +97,26 @@ class MainActivity : AppCompatActivity() {
         cartFab.setImageResource(R.drawable.cart)
         cartFab.contentDescription = "${cartItems.size} items in the cart"
     }
+
+    private fun launchCartActivity() {
+        val intent = Intent(this@MainActivity, CartActivity::class.java)
+        intent.putExtra("cartItems", ArrayList(cartItems))
+        startActivity(intent)
+    }
+
     // Function to handle "Back" button click
     fun onBackButtonClick(view: View) {
         // Redirect the user back to the LandingActivity when the "Back" button is clicked
         val intent = Intent(this, LandingActivity::class.java)
         startActivity(intent)
     }
+
+    private fun onMenuItemClick(menuItem: MenuItem) {
+        addItemToCart(menuItem)
+    }
+
+    private fun onAddToCartClick(menuItem: MenuItem) {
+        addItemToCart(menuItem)
+    }
+
 }

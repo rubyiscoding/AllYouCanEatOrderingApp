@@ -7,7 +7,27 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:padding="16dp">
 
-<ImageView
+    <!-- Back Button -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/GoldenSilk"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/backButton"-->
+<!--        android:layout_width="63dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:background="?android:attr/selectableItemBackgroundBorderless"-->
+<!--        android:contentDescription="Back"-->
+<!--        android:src="@drawable/backButton" />-->
+
+    <ImageView
     android:id="@+id/itemPhotoImageView"
     android:layout_width="100dp"
     android:layout_height="100dp"

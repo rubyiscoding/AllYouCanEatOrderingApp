@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/GoldenSilk">
+    android:background="@color/BrownSand">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,11 +16,11 @@
             android:id="@+id/menuRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/cartGuide"
             android:paddingBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/cartGuide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/menu_item_layout" />
 
         <!-- Guide to position the cart icon and cart item count badge -->
@@ -31,43 +31,28 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.85" />
 
-        <!-- Add the FloatingActionButton for the cart -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/cartFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/cart"
-            android:backgroundTint="@color/BrownSand"
-            app:layout_constraintStart_toEndOf="@id/cartGuide"
-            app:layout_constraintTop_toTopOf="@id/cartItemCountTextView" />
+
 
         <!-- Cart item count badge -->
-        <TextView
-            android:id="@+id/cartItemCountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/circle_background"
-            android:padding="8dp"
-            android:text="0"
-            android:textColor="@android:color/white"
-            android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@id/cartFab"
-            app:layout_constraintTop_toTopOf="@id/cartFab" />
 
         <!-- Add the "Back" button -->
+
+        <!-- Add the FloatingActionButton for the cart -->
+
+
         <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/bubblegum_sans"
-            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
             android:background="@color/BrownSand"
+            android:fontFamily="@font/bubblegum_sans"
+            android:onClick="onBackButtonClick"
+            android:text="Back"
+            android:textColor="#050505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cartGuide"
-            android:onClick="onBackButtonClick" />
+            app:layout_constraintTop_toBottomOf="@id/cartGuide" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

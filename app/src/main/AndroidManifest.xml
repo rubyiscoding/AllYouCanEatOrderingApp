@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.allyoucaneatorderingapp">
@@ -12,20 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllYouCanEatOrderingApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".CategoryMenuActivity"
+            android:exported="false"
+            android:label="@string/title_activity_category_menu"
+            android:theme="@style/Theme.AllYouCanEatOrderingApp" />
         <!-- Set LandingActivity as the new LAUNCHER activity -->
         <activity
             android:name=".LandingActivity"
+            android:exported="true"
             android:label="Landing Page"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true"> <!-- Set exported to true for the launcher activity -->
+            android:theme="@style/AppTheme.NoActionBar"> <!-- Set exported to true for the launcher activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Keep other activities as they are -->
+        </activity> <!-- Keep other activities as they are -->
         <activity
             android:name=".CartActivity"
             android:exported="false" />
@@ -40,9 +44,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <!-- Define other activities and components here as needed -->
-
     </application>
 
 </manifest>

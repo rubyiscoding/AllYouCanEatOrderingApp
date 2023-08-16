@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.view.MenuItem as AndroidMenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 
 class OrderSummaryActivity : AppCompatActivity() {
 
@@ -15,15 +17,17 @@ class OrderSummaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_summary)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val itemNameTextView = findViewById<TextView>(R.id.itemNameTextView)
         val itemDescriptionTextView = findViewById<TextView>(R.id.itemDescriptionTextView)
         val itemPhotoImageView = findViewById<ImageView>(R.id.itemPhotoImageView)
 
-        //selectedItem = intent.getSerializableExtra("selectedItem") as? MenuItem
         selectedItem = intent.getParcelableExtra("selectedItem")
-
             ?: run {
-                // Handle the case when the selected item is null or not of the correct type
                 finish()
                 return
             }
@@ -31,13 +35,11 @@ class OrderSummaryActivity : AppCompatActivity() {
         populateOrderSummary(selectedItem, itemNameTextView, itemDescriptionTextView, itemPhotoImageView)
 
         findViewById<TextView>(R.id.confirmOrderButton).setOnClickListener {
-            // Add logic here to handle confirming the order
             setResult(Activity.RESULT_OK)
             finish()
         }
 
         findViewById<TextView>(R.id.changeOrderButton).setOnClickListener {
-            // Add logic here to change the order if needed
             val intent = Intent()
             intent.putExtra("changedItem", selectedItem)
             setResult(Activity.RESULT_OK, intent)
@@ -45,7 +47,6 @@ class OrderSummaryActivity : AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.deleteOrderButton).setOnClickListener {
-            // Add logic here to delete the order
             setResult(Activity.RESULT_CANCELED)
             finish()
         }
@@ -60,5 +61,15 @@ class OrderSummaryActivity : AppCompatActivity() {
         itemNameTextView.text = menuItem.name
         itemDescriptionTextView.text = menuItem.description
         itemPhotoImageView.setImageResource(menuItem.photoResId)
+    }
+
+    override fun onOptionsItemSelected(item: AndroidMenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

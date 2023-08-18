@@ -1,47 +1,52 @@
 package com.example.allyoucaneatorderingapp
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.allyoucaneatorderingapp.databinding.CartItemViewBinding
+import com.example.allyoucaneatorderingapp.databinding.MenuItemViewBinding
 
-class MenuAdapter(
-    private val menuItems: List<MenuItem>,
-    private val onItemClick: (MenuItem) -> Unit,
-    private val onAddToCartClick: (MenuItem) -> Unit // New parameter for handling cart functionality
-) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+class MenuAdapter(private val menuItems: MutableList<String>, private val menuItemPrice: MutableList<String>, private val MenuItemImage: MutableList<Int>,private val context: Context) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
+    private val itemClickListener:OnClickListener ?= null
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
+        val binding = MenuItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MenuViewHolder(binding)
+    }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val itemName: TextView = itemView.findViewById(R.id.itemNameTextView)
-        private val itemDescription: TextView = itemView.findViewById(R.id.itemDescriptionTextView)
-        private val itemPhoto: ImageView = itemView.findViewById(R.id.itemPhotoImageView)
+    override fun getItemCount(): Int {
+        return menuItems.size
+    }
 
-        fun bind(menuItem: MenuItem) {
-            itemName.text = menuItem.name
-            itemDescription.text = menuItem.description
-            itemPhoto.setImageResource(menuItem.photoResId)
+    override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
+        holder.bind(position)
+    }
 
-            itemView.setOnClickListener {
-                onItemClick(menuItem)
+    inner class MenuViewHolder(private val binding: MenuItemViewBinding): RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION){
+                    itemClickListener?.onItemClick(position)
+                }
+                val intent = Intent(context, detail_activity::class.java)
+                intent.putExtra("name",menuItems.get(position))
+                intent.putExtra("image",MenuItemImage.get(position))
+                intent.putExtra("price",menuItemPrice.get(position))
+                context.startActivity(intent)
             }
-
-            itemPhoto.setOnClickListener {
-                onAddToCartClick(menuItem)
+        }
+        fun bind(position: Int){
+            binding.apply {
+                foodNameMenu.text = menuItems[position]
+                priceMenu.text = menuItemPrice[position]
+                menuFoodImage.setImageResource(MenuItemImage[position])
             }
         }
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.menu_item_layout, parent, false)
-        return ViewHolder(itemView)
+    interface OnClickListener {
+        fun onItemClick(position: Int)
     }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val menuItem = menuItems[position]
-        holder.bind(menuItem)
-    }
-
-    override fun getItemCount(): Int = menuItems.size
 }

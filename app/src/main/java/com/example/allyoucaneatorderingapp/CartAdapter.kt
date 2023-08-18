@@ -1,60 +1,76 @@
 package com.example.allyoucaneatorderingapp
 
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.allyoucaneatorderingapp.databinding.CartItemViewBinding
 
-class CartAdapter(
-    private val cartItems: List<CartItem>,
-    private val onQuantityChangeListener: (Int, Int) -> Unit,
-    private val onRemoveItemClickListener: (Int) -> Unit
-) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+class CartAdapter(private val cartItems: MutableList<String>, private val cartItemPrice: MutableList<String>,private val cartImage : MutableList<Int>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+    private val itemQuantities = IntArray(cartItems.size){1}
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val itemName: TextView = itemView.findViewById(R.id.itemNameTextView)
-        private val itemDescription: TextView = itemView.findViewById(R.id.itemDescriptionTextView)
-        private val itemPrice: TextView = itemView.findViewById(R.id.itemPriceTextView)
-        private val itemQuantity: TextView = itemView.findViewById(R.id.itemQuantityTextView)
-        private val increaseQuantityButton: Button = itemView.findViewById(R.id.increaseQuantityButton)
-        private val decreaseQuantityButton: Button = itemView.findViewById(R.id.decreaseQuantityButton)
-        private val removeItemButton: Button = itemView.findViewById(R.id.removeItemButton)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
+        val binding = CartItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CartViewHolder(binding)
+    }
 
-        fun bind(cartItem: CartItem) {
-            itemName.text = cartItem.name
-            itemDescription.text = cartItem.description
-            itemPrice.text = "$${"%.2f".format(cartItem.price)}"
-            itemQuantity.text = cartItem.quantity.toString()
+    override fun getItemCount(): Int {
+        return cartItems.size
+    }
 
-            increaseQuantityButton.setOnClickListener {
-                onQuantityChangeListener(adapterPosition, cartItem.quantity + 1)
-            }
+    override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
+        holder.bind(position)
+    }
 
-            decreaseQuantityButton.setOnClickListener {
-                if (cartItem.quantity > 1) {
-                    onQuantityChangeListener(adapterPosition, cartItem.quantity - 1)
+    inner class CartViewHolder(private val binding: CartItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(position: Int) {
+            binding.apply {
+                val quantity = itemQuantities[position]
+                cartFoodName.text = cartItems[position]
+                cartFoodPrice.text = cartItemPrice[position]
+                cartFoodImage.setImageResource(cartImage[position])
+                cartQuantity.text = quantity.toString()
+                decreaseQuantity.setOnClickListener {
+                    decreaseQuan(position)
                 }
-            }
+                increaseQuantity.setOnClickListener {
+                    increaseQuan(position)
+                }
+                deleteCartItem.setOnClickListener {
+                    val itemPosition = adapterPosition
+                    if (itemPosition != RecyclerView.NO_POSITION){
+                        deleteItem(position)
+                    }
+                }
 
-            removeItemButton.setOnClickListener {
-                onRemoveItemClickListener(adapterPosition)
+
             }
         }
-    }
+        private fun decreaseQuan(position: Int){
+            if (itemQuantities[position]>1){
+                itemQuantities[position]--
+                binding.cartQuantity.text = itemQuantities[position].toString()
+            }
+            else{
+                deleteItem(position)
+            }
+        }
+        private fun increaseQuan(position: Int){
+            if (itemQuantities[position]<10){
+                itemQuantities[position]++
+                binding.cartQuantity.text = itemQuantities[position].toString()
+            }
+        }
+        private fun deleteItem(position: Int){
+            if (itemQuantities[position]>=1){
+                cartItems.removeAt(position)
+                cartImage.removeAt(position)
+                cartItemPrice.removeAt(position)
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, cartItems.size)
+            }
+        }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.cart_item_layout, parent, false)
-        return ViewHolder(itemView)
     }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val cartItem = cartItems[position]
-        holder.bind(cartItem)
-    }
-
-    override fun getItemCount(): Int = cartItems.size
 }

@@ -13,34 +13,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllYouCanEatOrderingApp"
         tools:targetApi="31">
+
         <activity
-            android:name=".CategoryMenuActivity"
+            android:name=".detail_activity"
+            android:exported="false" />
+        <activity
+            android:name=".notification_activity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".congrats_activity"
+            android:exported="false" />
+        <activity
+            android:name=".pay_out"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false"
-            android:label="@string/title_activity_category_menu"
-            android:theme="@style/Theme.AllYouCanEatOrderingApp" />
-        <!-- Set LandingActivity as the new LAUNCHER activity -->
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".LandingActivity"
-            android:exported="true"
-            android:label="Landing Page"
-            android:theme="@style/AppTheme.NoActionBar"> <!-- Set exported to true for the launcher activity -->
+            android:name=".ChooseLocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Splash_Screen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Keep other activities as they are -->
-        <activity
-            android:name=".CartActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

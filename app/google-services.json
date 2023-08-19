@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "90397462087",
+    "project_id": "allyoucaneatorderingapp",
+    "storage_bucket": "allyoucaneatorderingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90397462087:android:f15126577c3acb43a66b62",
+        "android_client_info": {
+          "package_name": "com.example.allyoucaneatorderingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90397462087-1f8uej3rlf2vddi9uorat32vh4f2ctah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-9uRCIEwIg7UrXjz-I9HioVQGRC0FMm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90397462087-1f8uej3rlf2vddi9uorat32vh4f2ctah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

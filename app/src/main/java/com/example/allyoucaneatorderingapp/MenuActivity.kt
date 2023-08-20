@@ -21,7 +21,7 @@ class MenuActivity : AppCompatActivity() {
         binding.back.setOnClickListener {
             finish()
         }
-        val menuFoodName = listOf("Burger","Sandwich","Mo:Mo","Chowmein","Pizza","Shake")
+        val menuFoodName = listOf("Burger","Sandwich","Mo:Mo","Stir-fry Noodles","Special Pizza","Milkshake")
         val menuItemPrice = listOf("$ 7.85","$ 5.8","$ 10.39","$4.31","$15.92","$4.48")
         val menuImage = listOf(R.drawable.burger, R.drawable.sandwich,R.drawable.momos,R.drawable.chowmein, R.drawable.pizza,R.drawable.shake)
         val adapter = MenuAdapter(ArrayList(menuFoodName),ArrayList(menuItemPrice),ArrayList(menuImage), this)

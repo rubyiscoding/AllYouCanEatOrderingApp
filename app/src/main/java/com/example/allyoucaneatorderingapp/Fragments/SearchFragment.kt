@@ -16,7 +16,7 @@ class SearchFragment : Fragment() {
     private lateinit var adapter: MenuAdapter
 
     //original menu data
-    private val originalMenuFoodName = listOf("Burger","Sandwich","Mo:Mo","Chowmein","Pizza","Shake")
+    private val originalMenuFoodName = listOf("Burger","Sandwich","Mo:Mo","Stir-fry Noodles","Special Pizza","Milkshake")
     private val originalMenuItemPrice = listOf("$ 7.85","$ 5.8","$ 10.39","$4.31","$15.92","$4.48")
     private val originalMenuImage = listOf(R.drawable.burger, R.drawable.sandwich,R.drawable.momos,R.drawable.chowmein, R.drawable.pizza,R.drawable.shake)
     override fun onCreate(savedInstanceState: Bundle?) {

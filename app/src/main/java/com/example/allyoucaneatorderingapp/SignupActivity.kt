@@ -41,6 +41,7 @@ class SignupActivity : AppCompatActivity() {
             val enteredPassword = binding.password.text.toString()
 
             if (enteredEmail.isEmpty() || enteredPassword.isEmpty() || enteredName.isEmpty()) {
+                //using Toast to display a toast message if any field is empty
                 Toast.makeText(
                     this,
                     "Please enter complete details",
@@ -57,6 +58,7 @@ class SignupActivity : AppCompatActivity() {
                     editor.putString("user_password", enteredPassword)
                     editor.apply()
 
+                    //display successful message
                     Toast.makeText(
                         this,
                         "Registration Successful.",
@@ -67,7 +69,7 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this,
-                        "Invalid credentials. Please check your details.",
+                        "Invalid credentials. Please check your details.", //display error message for invalid credentials.
                         Toast.LENGTH_SHORT
                     ).show()
                 }

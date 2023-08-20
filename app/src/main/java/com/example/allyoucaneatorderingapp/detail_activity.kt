@@ -18,14 +18,16 @@ class detail_activity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set a click listener for the "Back" button
         binding.back.setOnClickListener {
-            finish()
+            finish() // finish the activity when the button is clicked to go back
         }
-
+        // Get data from the intent to display details
         val name = intent.getStringExtra("name")
         val price = intent.getStringExtra("price")
         val image = intent.getIntExtra("image",0)
 
+        // now we update the UI with the received data
         binding.detailImage.setImageResource(image)
         binding.detailFoodName.text = name
         binding.detailPrice.text = price

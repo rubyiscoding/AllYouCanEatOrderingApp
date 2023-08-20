@@ -6,8 +6,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-//import com.denzcoskun.imageslider.interfaces.ItemClickListener
-import com.example.allyoucaneatorderingapp.Fragments.CartFragment
 import com.example.allyoucaneatorderingapp.databinding.PopularItemViewBinding
 
 class PopularAdapter(private val items: List<String>, private val image : List<Int>, private val price: List<String>, private val context:Context) : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
@@ -47,14 +45,16 @@ class PopularAdapter(private val items: List<String>, private val image : List<I
             binding.foodNamePopular.text = item
             binding.pricePopular.text = price
             binding.PopularAddToCart.setOnClickListener {
-                binding.PopularAddToCart.text = "Added"
+                binding.PopularAddToCart.text = "Added to Cart"
 
+                //lets create an intent to navigate to the detail_activity
                 val intent = Intent(context, detail_activity::class.java)
                 intent.putExtra("name",item)
                 intent.putExtra("image",images)
                 intent.putExtra("price",price)
 
             }
+            //setting the image resource for the item
             imagesView.setImageResource(images)
         }
     }

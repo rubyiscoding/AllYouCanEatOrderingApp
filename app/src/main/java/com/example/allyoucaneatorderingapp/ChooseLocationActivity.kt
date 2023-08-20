@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.example.allyoucaneatorderingapp.databinding.ActivityChooseLocationBinding
 
 class ChooseLocationActivity : AppCompatActivity() {
 
+    // Using lazy initialization for the view binding
     val binding : ActivityChooseLocationBinding by lazy {
         ActivityChooseLocationBinding.inflate(layoutInflater)
     }
@@ -32,6 +31,7 @@ class ChooseLocationActivity : AppCompatActivity() {
                 if (parent != null){
                     binding.next.setOnClickListener {
                         val city = parent.selectedItem.toString()
+                        // Start MainActivity with the selected city as an extra
                         val intent = Intent(this@ChooseLocationActivity,MainActivity::class.java)
                         intent.putExtra("city",city)
                         startActivity(intent)

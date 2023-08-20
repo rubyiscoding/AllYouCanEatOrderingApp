@@ -29,6 +29,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+
+        // navigates to the menu when the "View Menu" button is clicked
         binding.viewMenu.setOnClickListener {
             startActivity(Intent(requireContext(), MenuActivity::class.java))
         }
@@ -38,6 +40,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // setting up carousels
         val imageList = ArrayList<SlideModel>()
         imageList.add(SlideModel(R.drawable.banner_1, ScaleTypes.FIT))
         imageList.add(SlideModel(R.drawable.banner_2, ScaleTypes.FIT))
@@ -58,7 +62,7 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(),itemMessage, Toast.LENGTH_SHORT).show()
             }
         })
-
+        //setting up the popular food items RecyclerView
         val foodName = listOf("Burger","Sandwich","Mo:Mo")
         val Price = listOf("$ 7.85","$ 5.8","$ 10.39")
         val popularFoodImages = listOf(R.drawable.burger,R.drawable.sandwich, R.drawable.momos)

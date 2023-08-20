@@ -14,12 +14,16 @@ import com.example.allyoucaneatorderingapp.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
     private lateinit var adapter: MenuAdapter
+
+    //original menu data
     private val originalMenuFoodName = listOf("Burger","Sandwich","Mo:Mo","Chowmein","Pizza","Shake")
     private val originalMenuItemPrice = listOf("$ 7.85","$ 5.8","$ 10.39","$4.31","$15.92","$4.48")
     private val originalMenuImage = listOf(R.drawable.burger, R.drawable.sandwich,R.drawable.momos,R.drawable.chowmein, R.drawable.pizza,R.drawable.shake)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+    //filtered menu data
     private val filteredMenuFoodName = mutableListOf<String>()
     private val filteredMenuFoodPrice =mutableListOf<String>()
     private val filteredMenuFoodImage = mutableListOf<Int>()
@@ -33,11 +37,13 @@ class SearchFragment : Fragment() {
         binding.recyclerSearch.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerSearch.adapter = adapter
 
+        // Set up the SearchView and show all menu items initially
         setupServiceView()
         showAllMenu()
         return binding.root
     }
 
+    //show all menu items
     private fun showAllMenu() {
         filteredMenuFoodName.clear()
         filteredMenuFoodPrice.clear()
@@ -50,6 +56,7 @@ class SearchFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
+    // Setup the SearchView and define its behavior
     private fun setupServiceView(){
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -64,6 +71,7 @@ class SearchFragment : Fragment() {
         })
     }
 
+    // now we filter menu items based on the search query
     private fun filterMenuItems(query: String){
         filteredMenuFoodName.clear()
         filteredMenuFoodPrice.clear()

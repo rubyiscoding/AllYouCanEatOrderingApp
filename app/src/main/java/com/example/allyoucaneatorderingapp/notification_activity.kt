@@ -20,9 +20,14 @@ class notification_activity : AppCompatActivity() {
         binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val notification = listOf("Your order has been Cancelled Successfully","Order has taken by driver", "Congrats order has been placed")
+        //sample notification data
+        val notification = listOf("Your order has been Cancelled Successfully."
+                                  ,"Congrats! Your order has been placed"
+                                  ,"Your order is on your way.")
+
+        //initializing the notification adapter
         val adapter = notificationAdapter(ArrayList(notification))
-        binding.notificationRecycler.adapter = adapter
-        binding.notificationRecycler.layoutManager = LinearLayoutManager(this)
+        binding.notificationRecycler.adapter = adapter //sets the adapter for notifiaction recycler view
+        binding.notificationRecycler.layoutManager = LinearLayoutManager(this) //sets the layout manager for the notification recycler view (here, LinearLayoutManager)
     }
 }

@@ -12,7 +12,7 @@ All You Can Eat Ordering App(Food For Foodies) that lets you explore a restauran
 * For now, we have hard coded the user credentials for accessing the app.
   * User Credentials for sign up:
     - Name: Enter user's name in this field.
-    - Email: user1@email.com, user2 @email.com, user3@email.com
+    - Email: user1@email.com, user2@email.com, user3@email.com
     - Password: password1, password2, password3
 
 ### Sign In:
@@ -48,7 +48,6 @@ All You Can Eat Ordering App(Food For Foodies) that lets you explore a restauran
 <img width="266" alt="image" src="https://github.com/rubyiscoding/AllYouCanEatOrderingApp/assets/74127503/f9c3976b-9a15-4858-b6d9-1e47dbdd199d">
 
 ### Sign-In Screen:
-![image](https://github.com/rubyiscoding/AllYouCanEatOrderingApp/assets/74127503/a8266168-276b-4768-b3a4-1047ba361688)
 ![image](https://github.com/rubyiscoding/AllYouCanEatOrderingApp/assets/74127503/44d58eb3-c4ee-4cfb-bda2-15b65a0b4f39)
 
 ### Sign-Up Screen:

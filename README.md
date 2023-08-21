@@ -1,11 +1,3 @@
-### Sign Up:
-* Users can create an account by providing their name, email, and password.
-* For now, we have hard coded the user credentials for accessing the app.
-  * User Credentials for sign up:
-    - Name: Enter user's name in this field.
-    - Email: user1@email.com, user2@email.com, user3@email.com
-    - Password: password1, password2, password3
-
 # AllYouCanEatOrderingApp
 This app allows users to choose items from a menu, add them to their order, and save it for future reference. The app also provides an option to view past orders, allowing users to modify or delete them as needed. It is created as a final project for the first semester of MAPD course.
 
@@ -87,6 +79,25 @@ All You Can Eat Ordering App(Food For Foodies) that lets you explore a restauran
 
 ### Notifications Screen:
 ![image](https://github.com/rubyiscoding/AllYouCanEatOrderingApp/assets/74127503/ccc8461f-f3a6-4019-9516-779154588411)
+
+## Contributions
+**Ruby Chaulagain (A00278592)**
+
+1. **Coding and Design:** Developed various fragments, activities, and layouts.
+2. **Functionality:** Implemented menu viewing, cart management, and order processing features.
+3. **Data Management:** Utilized shared preferences for user data storage and retrieval.
+4. **User Interface:** Designed and styled the app's user interfaces for consistency.
+5. **Documentation:** Created well-structured code and added comments for clarity.
+6. **Version Control:** Responsible for pushing all the code changes in github. 
+
+**Sunmeet Singh(A00272334):**
+
+1. **Coding and Design:** Developed the cart management system and checkout functionality.
+2. **Functionality:** Implemented signup, and login features.
+3. **User Interface:** Designed and styled user interfaces for a seamless user experience.
+4. **Database Interaction:** Utilized Shared Preferences for local data storage and retrieval.
+5. **Documentation:** Maintained clear and concise comments within the code.
+
 
 ## Acknowledgments
 

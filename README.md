@@ -24,7 +24,7 @@ All You Can Eat Ordering App(Food For Foodies) that lets you explore a restauran
     - Password: password1, password2, password3
 
 ### Sign In:
-* Registered users can sign in using their email and password used during sign up process.
+* Registered users can only sign in using their email and password used during sign up process. [IMPORTANT!!!]
 * Email credentials ensures secure access to the app.
 
 ### Explore the Menu: 
